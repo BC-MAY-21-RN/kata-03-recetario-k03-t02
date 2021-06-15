@@ -1,12 +1,10 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import MainScreen from './src/screens/MainScreen';
 
-const App = () => {
-  return (
-    <View>
-      <Text>Hola Mundo 2</Text>
-    </View>
-  );
+export default class App extends React.Component {
+  render(){
+    return(
+        <MainScreen />
+      );
+    }
 }
-export default App;
-
