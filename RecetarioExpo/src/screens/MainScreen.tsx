@@ -30,7 +30,7 @@ export default function MainScreen({ navigation }) {
         </View>
       </SafeAreaView>
     );
-  }
+}
   
   const styles = StyleSheet.create({
     container: {
