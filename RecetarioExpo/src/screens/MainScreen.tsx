@@ -1,32 +1,42 @@
 import React from 'react';
-import { StyleSheet, View, SafeAreaView, Platform, StatusBar, ScrollView} from 'react-native';
+import { StyleSheet, View, SafeAreaView, Platform, StatusBar, ScrollView, Button} from 'react-native';
 import ScrollableView from '../components/ScrollableView';
 import SearchText from '../components/SearchText';
 import data from '../data';
 import recentData from '../data/recentData'
-import { StackNavigationProp } from '@react-navigation/stack';
 
-type RootStackParamList = {
-  Home: undefined;
-  Detail: { title: string };
-};
-
-type DetailScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'Detail'
->;
+import Recipe from '../types/Recipe';
+import HomeScreenNavigationProp from '../types/HomeScreenNavigationProp';
+import HomeScreenRouteProp from '../types/HomeScreenRouteProp';
 
 type Props = {
-  navigation: DetailScreenNavigationProp;
+  route: HomeScreenRouteProp;
+  navigation: HomeScreenNavigationProp;
 };
 
-export default function MainScreen({ navigation }) {
+const MainScreen: React.FC<Props> = ({ navigation, route } : Props) =>{
+    const handleDetails = (
+      title : string,
+      img: any,
+      recipe: Recipe) => {
+      navigation.navigate('Detail',{title,img,recipe})
+    }
+
     return (
       <SafeAreaView style={{flex:1,paddingTop:Platform.OS === "android" ? StatusBar.currentHeight : 0}}>
         <View style={styles.container}>
           <SearchText />
-          <ScrollableView title="TRENDING" data={data}/>
-          <ScrollableView title="RECENT" data={recentData} big={true}/>
+          <ScrollableView 
+            title="TRENDING" 
+            data={data} 
+            handleDetails={handleDetails}
+          />
+          <ScrollableView 
+            title="RECENT" 
+            data={recentData} 
+            big={true} 
+            handleDetails={handleDetails}
+          />
         </View>
       </SafeAreaView>
     );
@@ -40,3 +50,5 @@ export default function MainScreen({ navigation }) {
       paddingTop:Platform.OS === "android" ? StatusBar.currentHeight : 0,
     },
   });
+
+export default MainScreen;

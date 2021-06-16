@@ -1,22 +1,26 @@
 import React from 'react';
 import { StyleSheet, ScrollView,View,Text} from 'react-native';
 import FoodItem from '../components/FoodItem';
+import Recipe from '../types/Recipe';
 
 type food = {
     title: string;
     src: string;
+    recipe: Recipe;
 }
 
 export type Props = {
     data: Array<food>;
     title: string;
-    big?: boolean
+    big?: boolean;
+    handleDetails: Function;
 };
 
 const ScrollableView: React.FC<Props> = ({
     data,
     title,
-    big = false
+    big = false,
+    handleDetails
   })  => {
         return (
             <View>
@@ -31,6 +35,8 @@ const ScrollableView: React.FC<Props> = ({
                                 title={food.title}
                                 img={food.src}
                                 bigCard={big}
+                                recepie={food.recipe}
+                                handleDetails={handleDetails}
                             />
                         ))
                     }

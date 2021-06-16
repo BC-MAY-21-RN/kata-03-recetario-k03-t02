@@ -1,34 +1,46 @@
 import React from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text,TouchableHighlight } from 'react-native';
+import Recipe from '../types/Recipe';
 
 export type Props = {
     bigCard?: boolean;
     title: string;
     img: any;
+    recepie: Recipe;
+    handleDetails: Function;
 };
 
 const FoodItem: React.FC<Props> = ({
     bigCard = false,
     title,
-    img
+    img,
+    recepie,
+    handleDetails
   })  => {
     return (
-        <View style={bigCard 
+        <View 
+            style={bigCard 
                     ? stylesBig.foodItemConatainer 
                     : styles.foodItemConatainer
-        }>
-            <Image
-                style={bigCard 
-                    ? stylesBig.img 
-                    : styles.img}
-                source={img}
-            />
-            <Text style={bigCard 
-                        ? stylesBig.text 
-                        : styles.text
-            }>
-            {title}
-            </Text>
+                    }
+                  
+        >
+            <TouchableHighlight onPress={() => handleDetails(title,img,recepie)}>
+                <View>
+                    <Image
+                        style={bigCard 
+                            ? stylesBig.img 
+                            : styles.img}
+                        source={img}
+                    />
+                    <Text style={bigCard 
+                                ? stylesBig.text 
+                                : styles.text
+                    }>
+                    {title}
+                    </Text>
+                </View>
+            </TouchableHighlight>
         </View>
     )
 }

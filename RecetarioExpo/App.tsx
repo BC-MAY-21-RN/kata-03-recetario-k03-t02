@@ -17,7 +17,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name="Home" component={MainScreen} />
-        <Stack.Screen name="Details" component={DetailScreen} />
+        <Stack.Screen name="Detail" component={DetailScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
