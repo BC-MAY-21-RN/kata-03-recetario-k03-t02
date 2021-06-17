@@ -8,10 +8,14 @@ export default class MainScreen extends React.Component {
     render(){
     return (
       <SafeAreaView style={{flex: 1, /*paddingTop:Platform.OS === "android" ? StatusBar.currentHeight : 1*/}}>
-      <View style={styles.container}>
-          <SearchText />
-          <HorizontalList />
-      </View>
+        <View style={styles.container}>
+            <SearchText />
+            <HorizontalList
+            tittle = 'TRENDING' />
+            <HorizontalList
+            tittle = 'RECENT' 
+            big = {true}/>
+        </View>
       </SafeAreaView>
     );
   }
@@ -19,7 +23,6 @@ export default class MainScreen extends React.Component {
   
   const styles = StyleSheet.create({
     container: {
-      alignItems: 'center',
       backgroundColor: '#282828',
       flex: 1,
       justifyContent: 'flex-start',

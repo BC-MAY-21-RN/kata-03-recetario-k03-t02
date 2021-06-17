@@ -3,12 +3,6 @@ import {TextInput, StyleSheet, View, Platform, StatusBar} from 'react-native';
 import { Icon } from 'react-native-elements';
 
 export default class SearchBar extends React.Component {
-  componentWillMount(){
-    this.startHeaderHeight = 80
-    if(Platform.OS == 'android') {
-      this.startHeaderHeight = 100 + StatusBar.currentHeight
-    }
-  }
   render(){
     return(
         <View style={styles.container}>
